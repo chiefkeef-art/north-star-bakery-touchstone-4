@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Send a pre-order or question to North Star Bakery, and find our location and hours.">
   <title>Contact and Pre-Orders | North Star Bakery</title>
+  <link rel="icon" type="image/png" href="images/bakery-logo_c.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&amp;family=Nunito:wght@400;700&amp;display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -26,6 +28,7 @@
       </ul>
     </nav>
   </header>
+  <div class="list-bar" id="list-bar" role="status" hidden></div>
 
   <main id="main">
     <h1>Contact and Pre-Orders</h1>
@@ -36,24 +39,40 @@
       <section class="card">
         <h2>Pre-Order and Inquiry Form</h2>
         <p>Fields marked "(required)" must be filled in before the form can be sent.</p>
-        <form action="#" method="post">
+
+        <div class="order-summary" id="order-summary" hidden>
+          <h3>Your pre-order list</h3>
+          <ul id="order-summary-items"></ul>
+          <p id="order-summary-total"></p>
+          <p>We added this list to "Item details" below, so you can edit it before sending.
+            <a href="products.html#preorder-panel">Change your list on the Products page</a></p>
+        </div>
+
+        <form id="preorder-form" action="#" method="post">
           <fieldset>
             <legend>Your contact information</legend>
             <p class="field">
               <label for="name">Full name (required)</label>
               <input type="text" id="name" name="name" required minlength="2" maxlength="60"
-                autocomplete="name">
+                autocomplete="name" aria-describedby="error-name">
+              <span class="error" id="error-name"></span>
             </p>
             <p class="field">
               <label for="email">Email address (required)</label>
               <input type="email" id="email" name="email" required maxlength="100"
-                autocomplete="email">
+                autocomplete="email" aria-describedby="error-email">
+              <span class="error" id="error-email"></span>
             </p>
             <p class="field">
               <label for="phone">Phone number, if you would like a call when your order is ready
                 (format: 651-555-0123)</label>
               <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                title="Use the format 651-555-0123" autocomplete="tel">
+                title="Use the format 651-555-0123" autocomplete="tel" aria-describedby="error-phone">
+              <span class="error" id="error-phone"></span>
+            </p>
+            <p class="choice">
+              <input type="checkbox" id="remember" name="remember">
+              <label for="remember">Remember my name and email on this device for next time</label>
             </p>
           </fieldset>
 
@@ -62,29 +81,36 @@
             <fieldset class="choices">
               <legend>Request type (required)</legend>
               <p class="choice">
-                <input type="radio" id="type-preorder" name="request_type" value="pre-order" required>
+                <input type="radio" id="type-preorder" name="request_type" value="pre-order" required
+                  aria-describedby="error-request_type">
                 <label for="type-preorder">Pre-order: bread, pastries or cookies</label>
               </p>
               <p class="choice">
-                <input type="radio" id="type-cake" name="request_type" value="cake-or-event" required>
+                <input type="radio" id="type-cake" name="request_type" value="cake-or-event" required
+                  aria-describedby="error-request_type">
                 <label for="type-cake">Custom cake or event order</label>
               </p>
               <p class="choice">
                 <input type="radio" id="type-question" name="request_type" value="general-question"
-                  required>
+                  required aria-describedby="error-request_type">
                 <label for="type-question">General question</label>
               </p>
+              <p class="error" id="error-request_type"></p>
             </fieldset>
             <p class="field">
-              <label for="pickup-date">Pickup date for orders (please allow 48 hours, or one week for
-                cakes)</label>
-              <input type="date" id="pickup-date" name="pickup_date">
+              <label for="pickup-date">Pickup date for orders (we are closed Mondays; please allow
+                48 hours, or one week for cakes)</label>
+              <input type="date" id="pickup-date" name="pickup_date"
+                aria-describedby="error-pickup_date">
+              <span class="error" id="error-pickup_date"></span>
             </p>
             <p class="field">
               <label for="details">Item details (required): what you would like, how many, and any
                 cake size, flavor or message</label>
               <textarea id="details" name="details" rows="5" cols="50" required minlength="10"
-                maxlength="600"></textarea>
+                maxlength="600" aria-describedby="details-count error-details"></textarea>
+              <span class="char-count" id="details-count">0 of 600 characters</span>
+              <span class="error" id="error-details"></span>
             </p>
           </fieldset>
 
@@ -93,10 +119,13 @@
             <p class="field">
               <label for="allergies">Allergy notes, if applicable (for example: tree nut allergy or
                 dairy-free)</label>
-              <textarea id="allergies" name="allergies" rows="3" cols="50" maxlength="300"></textarea>
+              <textarea id="allergies" name="allergies" rows="3" cols="50" maxlength="300"
+                aria-describedby="error-allergies"></textarea>
+              <span class="error" id="error-allergies"></span>
             </p>
           </fieldset>
 
+          <p class="form-status" id="form-status" role="status"></p>
           <p><button class="button" type="submit">Send my request</button></p>
         </form>
       </section>

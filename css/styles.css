@@ -26,6 +26,11 @@
 
 /* ---------- Base ---------- */
 
+/* elements hidden by JavaScript stay hidden even if a class sets display */
+[hidden] {
+  display: none !important;
+}
+
 *,
 *::before,
 *::after {
@@ -523,6 +528,254 @@ thead th {
   outline-color: var(--peach);
 }
 
+/* ---------- Pre-order list bar (all pages) ---------- */
+
+.list-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem var(--space-2);
+  background-color: var(--brown);
+  color: var(--cream);
+  text-align: center;
+}
+
+.list-bar p {
+  margin: 0;
+  max-width: none;
+}
+
+.list-bar a {
+  color: var(--cream);
+}
+
+.list-bar .button {
+  padding: 0.35rem 1rem;
+  border-color: var(--cream);
+  background-color: var(--cream);
+  color: var(--brown);
+}
+
+.list-bar .button:hover {
+  border-color: var(--peach);
+  background-color: var(--peach);
+  color: var(--charcoal);
+}
+
+.list-bar :focus-visible {
+  outline-color: var(--peach);
+}
+
+/* ---------- Products page: filter, add buttons, list panel ---------- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.filter-button {
+  min-height: 44px;
+  padding: 0.45rem 1rem;
+  border: 2px solid var(--brown);
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--brown);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  border-color: var(--peach);
+  background-color: var(--peach);
+  color: var(--charcoal);
+}
+
+.filter-button[aria-pressed="true"] {
+  border-color: var(--brown);
+  background-color: var(--brown);
+  color: var(--cream);
+}
+
+.filter-status {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.add-button {
+  margin-top: var(--space-1);
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
+}
+
+.add-button.in-list {
+  border-color: var(--peach);
+  background-color: var(--peach);
+  color: var(--charcoal);
+}
+
+.products-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.products-main > section,
+.products-main > .card-grid {
+  margin-bottom: var(--space-4);
+}
+
+.products-main > :last-child {
+  margin-bottom: 0;
+}
+
+.preorder-items {
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.preorder-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--soft-line);
+}
+
+.item-name {
+  flex: 1 1 100%;
+  font-weight: 700;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--brown);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--brown);
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qty-button:hover {
+  border-color: var(--peach);
+  background-color: var(--peach);
+  color: var(--charcoal);
+}
+
+.qty {
+  min-width: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.line-total {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.link-button {
+  padding: 0.25rem 0;
+  border: none;
+  background: none;
+  color: var(--brown);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.preorder-total {
+  color: var(--brown);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.preorder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- Contact page: list summary, errors, status ---------- */
+
+.order-summary {
+  margin-bottom: var(--space-3);
+  padding: var(--space-2);
+  border: 2px dashed var(--peach);
+  border-radius: var(--radius);
+}
+
+.order-summary ul {
+  margin: 0 0 var(--space-1);
+}
+
+/* error messages sit right under their field; empty ones take no space */
+.error {
+  display: block;
+  margin-top: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 8px;
+  background-color: var(--peach);
+  color: var(--charcoal);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.error:empty {
+  display: none;
+}
+
+.error::before {
+  content: "\26A0  ";
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-width: 3px;
+  border-color: var(--charcoal);
+  box-shadow: 0 0 0 3px var(--peach);
+}
+
+.char-count {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status-error {
+  color: var(--brown);
+  font-weight: 700;
+}
+
+.form-status-success {
+  padding: var(--space-2);
+  border: 2px solid var(--brown);
+  border-left: 8px solid var(--peach);
+  border-radius: var(--radius);
+  font-weight: 700;
+}
+
 /* =========================================================================
    Tablets and up (768px): header in one row, content side by side
    ========================================================================= */
@@ -655,6 +908,30 @@ thead th {
 
   .contact-info > * {
     flex: none;
+  }
+
+  /* Products page: the pre-order list stays in view beside the products */
+  .products-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .products-main {
+    flex: 3 1 0;
+    min-width: 0;
+  }
+
+  .preorder-panel {
+    position: sticky;
+    top: var(--space-2);
+    flex: 1.4 1 0;
+    min-width: 0;
+    max-height: calc(100vh - 2rem); /* a long list scrolls inside the panel */
+    overflow-y: auto;
+  }
+
+  .products-main .card-grid > * {
+    flex: 1 1 40%;
   }
 }
 
