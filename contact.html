@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Send a pre-order or question to North Star Bakery, and find our location and hours.">
+  <title>Contact and Pre-Orders | North Star Bakery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&amp;family=Nunito:wght@400;700&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="brand">
+      <img class="logo" src="images/bakery-logo_c.png" alt="North Star Bakery logo" width="150" height="128">
+      <p class="tagline">Handmade bread, pastries and cakes, baked fresh every morning in Saint Paul.</p>
+    </div>
+    <nav aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products and Prices</a></li>
+        <li><a href="about.html">About Our Bakery</a></li>
+        <li><a href="contact.html" aria-current="page">Contact and Pre-Orders</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h1>Contact and Pre-Orders</h1>
+    <p class="intro">Planning a breakfast meeting, a birthday or just your weekend bread? Send us a
+      request and we will reply within one business day to confirm. You pay when you pick up.</p>
+
+    <div class="contact-layout">
+      <section class="card">
+        <h2>Pre-Order and Inquiry Form</h2>
+        <p>Fields marked "(required)" must be filled in before the form can be sent.</p>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Your contact information</legend>
+            <p class="field">
+              <label for="name">Full name (required)</label>
+              <input type="text" id="name" name="name" required minlength="2" maxlength="60"
+                autocomplete="name">
+            </p>
+            <p class="field">
+              <label for="email">Email address (required)</label>
+              <input type="email" id="email" name="email" required maxlength="100"
+                autocomplete="email">
+            </p>
+            <p class="field">
+              <label for="phone">Phone number, if you would like a call when your order is ready
+                (format: 651-555-0123)</label>
+              <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                title="Use the format 651-555-0123" autocomplete="tel">
+            </p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Your request</legend>
+            <fieldset class="choices">
+              <legend>Request type (required)</legend>
+              <p class="choice">
+                <input type="radio" id="type-preorder" name="request_type" value="pre-order" required>
+                <label for="type-preorder">Pre-order: bread, pastries or cookies</label>
+              </p>
+              <p class="choice">
+                <input type="radio" id="type-cake" name="request_type" value="cake-or-event" required>
+                <label for="type-cake">Custom cake or event order</label>
+              </p>
+              <p class="choice">
+                <input type="radio" id="type-question" name="request_type" value="general-question"
+                  required>
+                <label for="type-question">General question</label>
+              </p>
+            </fieldset>
+            <p class="field">
+              <label for="pickup-date">Pickup date for orders (please allow 48 hours, or one week for
+                cakes)</label>
+              <input type="date" id="pickup-date" name="pickup_date">
+            </p>
+            <p class="field">
+              <label for="details">Item details (required): what you would like, how many, and any
+                cake size, flavor or message</label>
+              <textarea id="details" name="details" rows="5" cols="50" required minlength="10"
+                maxlength="600"></textarea>
+            </p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Allergies and dietary needs</legend>
+            <p class="field">
+              <label for="allergies">Allergy notes, if applicable (for example: tree nut allergy or
+                dairy-free)</label>
+              <textarea id="allergies" name="allergies" rows="3" cols="50" maxlength="300"></textarea>
+            </p>
+          </fieldset>
+
+          <p><button class="button" type="submit">Send my request</button></p>
+        </form>
+      </section>
+
+      <div class="row contact-info">
+        <section class="card">
+          <h2>Visit Us</h2>
+          <address>
+            North Star Bakery<br>
+            418 Juniper Street<br>
+            Saint Paul, MN 55104<br>
+            Phone: <a href="tel:+16515550142">(651) 555-0142</a><br>
+            Email: <a href="mailto:orders@northstarbakery.example">orders@northstarbakery.example</a>
+          </address>
+          <p>We are on the corner of Juniper Street and Fourth Avenue, two blocks from the Juniper
+            Street bus stop. Free street parking is available, and there is a bike rack out front.
+            Pre-order pickups are at the front counter.</p>
+        </section>
+
+        <section class="card">
+          <h2>Hours of Operation</h2>
+          <table>
+            <caption>North Star Bakery weekly hours</caption>
+            <thead>
+              <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Monday</th>
+                <td>Closed</td>
+              </tr>
+              <tr>
+                <th scope="row">Tuesday to Friday</th>
+                <td>6:30 a.m. to 6:00 p.m.</td>
+              </tr>
+              <tr>
+                <th scope="row">Saturday</th>
+                <td>7:00 a.m. to 4:00 p.m.</td>
+              </tr>
+              <tr>
+                <th scope="row">Sunday</th>
+                <td>7:00 a.m. to 1:00 p.m.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Pre-orders can be picked up any time we are open. Holiday hours are posted in our front
+            window.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <address>
+      North Star Bakery, 418 Juniper Street, Saint Paul, MN 55104<br>
+      Phone: <a href="tel:+16515550142">(651) 555-0142</a>
+    </address>
+    <p>&copy; 2026 North Star Bakery. Baked by hand in our neighborhood since 2012.</p>
+  </footer>
+</body>
+</html>

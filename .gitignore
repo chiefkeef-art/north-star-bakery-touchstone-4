@@ -1,0 +1,3 @@
+# Word documents (assignment write-ups) stay out of the website repository
+*.docx
+~$*

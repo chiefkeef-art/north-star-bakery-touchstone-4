@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neighborhood bakery in Saint Paul baking bread, pastries and cakes by hand.">
+  <title>North Star Bakery | Fresh Bread and Pastries in Saint Paul</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&amp;family=Nunito:wght@400;700&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="brand">
+      <img class="logo" src="images/bakery-logo_c.png" alt="North Star Bakery logo" width="150" height="128">
+      <p class="tagline">Handmade bread, pastries and cakes, baked fresh every morning in Saint Paul.</p>
+    </div>
+    <nav aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="products.html">Products and Prices</a></li>
+        <li><a href="about.html">About Our Bakery</a></li>
+        <li><a href="contact.html">Contact and Pre-Orders</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Welcome to North Star Bakery</h1>
+        <p>Good morning, neighbor! We are a small, family-run bakery on Juniper Street, and we have
+          been baking bread, pastries and cakes by hand since 2012. Grab a warm croissant on your way
+          to work, bring the kids in for a Saturday cinnamon roll, or let us bake for your next
+          celebration.</p>
+        <p class="actions">
+          <a class="button" href="contact.html">Send a pre-order</a>
+          <a class="button button-outline" href="products.html">See our products</a>
+        </p>
+      </div>
+      <img class="hero-image" src="images/bakery-storefront_c.png"
+        alt="The front window of North Star Bakery, with wooden shelves of fresh loaves, rolls and pastries on display"
+        width="1200" height="715">
+    </section>
+
+    <section>
+      <h2>What We're Known For</h2>
+      <ul class="card-grid">
+        <li class="card">
+          <h3>Slow-rise sourdough</h3>
+          <p>Our loaves ferment for a full day, which gives them a crackly crust and a soft, tangy
+            inside.</p>
+        </li>
+        <li class="card">
+          <h3>Hand-rolled pastries</h3>
+          <p>Croissants, cinnamon rolls and fruit danishes made with real butter every morning.</p>
+        </li>
+        <li class="card">
+          <h3>Celebration cakes</h3>
+          <p>Birthday, shower and office cakes decorated to order for families and event
+            planners.</p>
+        </li>
+        <li class="card">
+          <h3>Easy pre-orders</h3>
+          <p>Request bread, pastry boxes or cakes ahead of time and pick them up on your way.</p>
+        </li>
+      </ul>
+      <p><a href="products.html">See all of our products and price ranges</a></p>
+    </section>
+
+    <section class="card feature">
+      <h2>Featured Item of the Week</h2>
+      <div class="feature-body">
+        <picture>
+          <source media="(min-width: 48em)" srcset="images/bakery-feature-large_c.png">
+          <img src="images/bakery-feature-small_c.png"
+            alt="Brown butter chocolate chunk cookies stacked on wooden trays in our pastry case, next to sugar-topped pastries">
+        </picture>
+        <div class="feature-text">
+          <p class="badge">This week only</p>
+          <h3>Brown Butter Chocolate Chunk Cookies</h3>
+          <p>This week we are baking extra trays of our brown butter chocolate chunk cookies: crisp
+            at the edges, soft in the middle and finished with flaky sea salt.</p>
+          <p><span class="price">$3 each</span> <span class="price">$16 for a half dozen</span></p>
+          <p><a class="button" href="contact.html">Pre-order a box of cookies</a></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="row">
+      <section class="card">
+        <h2>A Welcome from Our Bakers</h2>
+        <p>Press play to hear a short welcome message recorded in our kitchen (about 25
+          seconds).</p>
+        <audio controls preload="metadata">
+          <source src="media/bakery-welcome_c.mp3" type="audio/mpeg">
+          <p>Your browser does not support the audio element. You can
+            <a href="media/bakery-welcome_c.mp3">download the welcome message as an MP3 file</a>
+            instead.</p>
+        </audio>
+        <p class="media-note">What you will hear: one of our bakers welcomes you to North Star
+          Bakery and explains that every loaf starts before sunrise with simple ingredients, local
+          grains and plenty of time. The message ends with an invitation to stop by or place a
+          pre-order.</p>
+      </section>
+
+      <section class="card">
+        <h2>Hours and Location</h2>
+        <p>418 Juniper Street, Saint Paul, MN 55104, two blocks from the Juniper Street bus stop.</p>
+        <ul>
+          <li>Tuesday to Friday: 6:30 a.m. to 6:00 p.m.</li>
+          <li>Saturday: 7:00 a.m. to 4:00 p.m.</li>
+          <li>Sunday: 7:00 a.m. to 1:00 p.m.</li>
+          <li>Monday: Closed</li>
+        </ul>
+        <p>We open early on weekdays so commuters can grab breakfast on the way to work.</p>
+        <p><a href="contact.html">Get directions and full contact details</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <address>
+      North Star Bakery, 418 Juniper Street, Saint Paul, MN 55104<br>
+      Phone: <a href="tel:+16515550142">(651) 555-0142</a>
+    </address>
+    <p>&copy; 2026 North Star Bakery. Baked by hand in our neighborhood since 2012.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,677 @@
+/* =========================================================================
+   North Star Bakery - shared stylesheet for all four pages
+   Palette (4 colors): cream #FFF8F0, brown #6B3E26, peach #D88C5A, charcoal #2F2A26
+   Fonts (2 families): Lora for headings, Nunito for body text
+   Written mobile-first: base styles are for phones, media queries add
+   layout for larger screens.
+   ========================================================================= */
+
+:root {
+  --cream: #FFF8F0;     /* page background, text on brown */
+  --brown: #6B3E26;     /* headings, links, buttons, footer (8.5:1 on cream) */
+  --peach: #D88C5A;     /* accents only: borders, badges, highlights (never text on cream) */
+  --charcoal: #2F2A26;  /* body text (13.5:1 on cream, 5.3:1 on peach) */
+
+  --font-heading: "Lora", Georgia, "Times New Roman", serif;
+  --font-body: "Nunito", "Segoe UI", Arial, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --radius: 12px;
+  --max-width: 72rem;
+  --soft-line: rgba(107, 62, 38, 0.25);  /* brown at 25% for thin dividers */
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  /* column flex layout keeps the footer at the bottom on short pages */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+audio {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--space-2);
+}
+
+p,
+li,
+dd {
+  max-width: 68ch; /* keeps lines short enough to read comfortably */
+}
+
+p {
+  margin: 0 0 var(--space-2);
+}
+
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3,
+legend,
+caption,
+dt {
+  font-family: var(--font-heading);
+  color: var(--brown);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+/* short peach bar under each h2 to mark the start of a section */
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: 0.4rem;
+  border-radius: 2px;
+  background-color: var(--peach);
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-1);
+}
+
+.intro {
+  font-size: 1.15rem;
+  margin-bottom: var(--space-3);
+}
+
+.media-note,
+figcaption {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+li::marker {
+  color: var(--peach);
+}
+
+/* ---------- Links and buttons ---------- */
+
+a {
+  color: var(--brown);
+  font-weight: 700;
+}
+
+a:hover {
+  color: var(--charcoal);
+  text-decoration-color: var(--peach);
+}
+
+:focus-visible {
+  outline: 3px solid var(--brown);
+  outline-offset: 3px;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid var(--brown);
+  border-radius: 999px;
+  background-color: var(--brown);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--cream);
+}
+
+.button-outline {
+  background-color: transparent;
+  color: var(--brown);
+}
+
+.button-outline:hover {
+  background-color: var(--peach);
+  border-color: var(--peach);
+  color: var(--charcoal);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: var(--space-2);
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 8px 8px;
+  background-color: var(--brown);
+  color: var(--cream);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ---------- Header and navigation ---------- */
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-bottom: 4px solid var(--peach);
+  text-align: center;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.logo {
+  width: 96px;
+  /* the logo file has a white background; multiply blends it into the cream page */
+  mix-blend-mode: multiply;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* phones: two equal-size buttons per row, easy to tap */
+.nav-list li {
+  display: flex;
+  flex: 1 1 40%;
+}
+
+.nav-list a {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--brown);
+  border-radius: var(--radius);
+  color: var(--brown);
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  background-color: var(--peach);
+  border-color: var(--peach);
+  color: var(--charcoal);
+}
+
+.nav-list a[aria-current="page"] {
+  background-color: var(--brown);
+  color: var(--cream);
+}
+
+/* ---------- Main layout ---------- */
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-2) var(--space-4);
+}
+
+main > section,
+main > .row,
+main > .card-grid,
+main > .contact-layout {
+  margin-bottom: var(--space-4);
+}
+
+.card {
+  padding: var(--space-3);
+  border: 1px solid var(--soft-line);
+  border-top: 6px solid var(--peach);
+  border-radius: var(--radius);
+  background-color: var(--cream);
+  box-shadow: 0 2px 10px rgba(47, 42, 38, 0.08);
+}
+
+.card > :last-child {
+  margin-bottom: 0;
+}
+
+/* flex containers: stacked on phones, side by side on larger screens */
+.row,
+.card-grid,
+.hero,
+.feature-body,
+.media-pair,
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.card-grid {
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.row > *,
+.card-grid > *,
+.contact-layout > * {
+  margin: 0;
+}
+
+/* ---------- Home page ---------- */
+
+.hero {
+  margin-bottom: var(--space-4);
+}
+
+.hero-image,
+.feature-body img,
+.media-pair img,
+video {
+  border-radius: var(--radius);
+}
+
+.badge,
+.price {
+  display: inline-block;
+  padding: 0.1rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--peach);
+  color: var(--charcoal);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge {
+  margin-bottom: var(--space-1);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Products page ---------- */
+
+.price-range {
+  color: var(--brown);
+  font-weight: 700;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  margin-top: var(--space-1);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2);
+}
+
+.menu > div {
+  padding-bottom: var(--space-2);
+  border-bottom: 1px dashed var(--soft-line);
+}
+
+.menu dt {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.menu dd {
+  margin: 0.2rem 0 0;
+}
+
+/* ---------- About page ---------- */
+
+.role {
+  margin-bottom: var(--space-1);
+  color: var(--brown);
+  font-weight: 700;
+}
+
+/* ---------- Contact page: form and hours table ---------- */
+
+form {
+  max-width: 40rem; /* one readable column, even on wide screens */
+}
+
+fieldset {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-1);
+  border: 2px solid var(--peach);
+  border-radius: var(--radius);
+}
+
+legend {
+  padding: 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+fieldset .choices {
+  border-style: dashed;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--brown);
+  border-radius: 8px;
+  background-color: var(--cream);
+  color: var(--charcoal);
+  font: inherit;
+}
+
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.choice input {
+  flex: none; /* keep the radio full size when its label wraps */
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--brown);
+}
+
+address {
+  margin-bottom: var(--space-2);
+  font-style: normal;
+}
+
+table {
+  width: 100%;
+  margin-bottom: var(--space-2);
+  border-collapse: collapse;
+}
+
+caption {
+  margin-bottom: var(--space-1);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--soft-line);
+  text-align: left;
+}
+
+td {
+  white-space: nowrap; /* keep each time range on one line */
+}
+
+thead th {
+  background-color: var(--brown);
+  color: var(--cream);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: var(--space-3) var(--space-2);
+  background-color: var(--brown);
+  color: var(--cream);
+  text-align: center;
+}
+
+.site-footer address,
+.site-footer p {
+  margin: 0;
+  max-width: none;
+}
+
+.site-footer a {
+  color: var(--cream);
+}
+
+.site-footer a:hover {
+  color: var(--cream);
+  text-decoration-color: var(--peach);
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--peach);
+}
+
+/* =========================================================================
+   Tablets and up (768px): header in one row, content side by side
+   ========================================================================= */
+@media (min-width: 48em) {
+  body {
+    font-size: 1.125rem;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  /* logo and tagline side by side; nav stays centered on its own row */
+  .site-header {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .brand {
+    flex-direction: row;
+    gap: var(--space-2);
+    text-align: left;
+  }
+
+  .logo {
+    width: 110px;
+  }
+
+  .tagline {
+    max-width: 20rem;
+  }
+
+  .nav-list li {
+    flex: 0 0 auto;
+  }
+
+  .nav-list a {
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    font-size: 1rem;
+  }
+
+  main {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .row,
+  .media-pair {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .row > *,
+  .media-pair > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .card-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card-grid > * {
+    flex: 1 1 40%; /* two per row; the gap fills the rest */
+  }
+
+  .menu-columns {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: var(--space-4);
+  }
+
+  .menu-columns > div {
+    flex: 1 1 40%;
+  }
+
+  .site-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3);
+    text-align: left;
+  }
+}
+
+/* =========================================================================
+   Desktops (1024px): text and photos side by side, card grids in one row,
+   contact details move into a column beside the form
+   ========================================================================= */
+@media (min-width: 64em) {
+  .hero,
+  .feature-body {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero {
+    gap: var(--space-4);
+  }
+
+  .hero > *,
+  .feature-body > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .card-grid > * {
+    flex: 1 1 0;
+  }
+
+  .contact-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .contact-layout > .card {
+    flex: 3 1 0;
+    min-width: 0;
+  }
+
+  .contact-layout > .contact-info {
+    flex: 2 1 0;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .contact-info > * {
+    flex: none;
+  }
+}
+
+/* =========================================================================
+   Wide screens (1120px): logo, tagline and nav fit in one header row
+   ========================================================================= */
+@media (min-width: 70em) {
+  .site-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .tagline {
+    max-width: 15rem;
+  }
+
+  .nav-list {
+    justify-content: flex-end;
+  }
+}
